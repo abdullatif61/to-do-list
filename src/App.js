@@ -1,7 +1,11 @@
-import { useEffect, useState, } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
+import { useEffect, useState, } from 'react'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import InputGroup from 'react-bootstrap/InputGroup'
+import {ReactComponent as EditIcon  } from "./assets/edit.svg";
+import {ReactComponent as SaveIcon  } from "./assets/save.svg";
+import {ReactComponent as DeleteIcon  } from "./assets/sil.svg";
+
 
 
 
@@ -34,26 +38,29 @@ function App() {
           <div className='mt-5'>
             {
               toDoList.map(
-                (toDoItem,index)=>
-                <div key={index} className="d-flex justify-content-between">
-                  <div className='d-flex'>
-                    <Form.Check
-                    type="checkbox"
-                    className='me-2'
-                    />
-                    <label>
-                      {toDoItem}
-                    </label>
+                (toDoItem, index) =>
+                  <div key={index} className="d-flex justify-content-between">
+                    <div className='d-flex'>
+                      <Form.Check
+                        type="checkbox"
+                        className='me-2'
+                      />
+                      <label>
+                        {toDoItem}
+                      </label>
+
+                    </div>
+                    <div>
+                    <EditIcon width={25} height={25} style={{cursor:"pointer"}} className={"me-2"}/>
+                    <SaveIcon width={25} height={25} style={{cursor:"pointer"}} className={"me-2"}/>
+                    <DeleteIcon width={25} height={25} style={{cursor:"pointer"}} className={"me-2"}/>
+
+                    </div>
 
                   </div>
-                  <div>
-                    butaonlar
-                  </div>
-
-                </div>
               )
             }
-            
+
           </div>
 
         </div>
