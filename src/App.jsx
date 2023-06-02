@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   const [yazi, setYazi] = useState("");
   const [liste, setListe] = useState([]);
-  const [loc, setLoc] = useState(localStorage.getItem("liste"));
+  const loc = localStorage.getItem("liste")
   
 
 
