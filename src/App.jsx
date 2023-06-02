@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   const [yazi, setYazi] = useState("");
   const [liste, setListe] = useState([]);
-  const loc = localStorage.getItem("liste")
+  const [loc, setLoc] = useState(localStorage.getItem("liste"));
   
 
 
@@ -14,8 +14,11 @@ function App() {
 
       setListe(JSON.parse(loc));
     }
+    else{
+      setLoc([])
+    }
 
-  },[] );
+  },[loc] );
   useEffect(() => {
    
 
