@@ -4,21 +4,22 @@ import "./App.css";
 function App() {
   const [yazi, setYazi] = useState("");
   const [liste, setListe] = useState([]);
-  const loc = localStorage.getItem("liste");
+  const [loc, setLoc] = useState(localStorage.getItem("liste"));
+  useEffect(() => {
+    if(1 === 2 ){
+
+      setLoc(localStorage.getItem("liste"));
+    }
+  }, []);
 
   useEffect(() => {
-    if(loc){
-
+    if (loc) {
       setListe(JSON.parse(loc));
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-
-  }, []);
+  }, [loc]);
   useEffect(() => {
     localStorage.setItem("liste", JSON.stringify(liste));
   }, [liste]);
-
 
   function sil(id) {
     const yeniListe = liste.filter((item) => item.id !== id);
