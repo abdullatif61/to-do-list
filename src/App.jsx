@@ -4,29 +4,21 @@ import "./App.css";
 function App() {
   const [yazi, setYazi] = useState("");
   const [liste, setListe] = useState([]);
-  const [loc, setLoc] = useState(localStorage.getItem("liste"));
-  
+  const loc = localStorage.getItem("liste");
 
-
-  
-  useEffect(() => { 
-    if (loc !== null ){
+  useEffect(() => {
+    if(loc){
 
       setListe(JSON.parse(loc));
     }
-    else{
-      setLoc([])
-    }
 
-  },[loc] );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  }, []);
   useEffect(() => {
-   
-
-      localStorage.setItem("liste", JSON.stringify(liste));
-    
-
-
+    localStorage.setItem("liste", JSON.stringify(liste));
   }, [liste]);
+
 
   function sil(id) {
     const yeniListe = liste.filter((item) => item.id !== id);
@@ -44,9 +36,10 @@ function App() {
       id: Math.floor(Math.random() * 1000),
       value: yazi,
     };
-    setListe((eskideger) => [...eskideger, eleman]);
+    setListe([...liste, eleman]);
     setYazi("");
   }
+
   return (
     <div className="flex py-6 px-4 flex-col mx-auto sm:w-[600px] w-screen gap-y-3 sm:h-[600px] h-screen max-h-full overflow-auto bg-orange-300 ">
       <h1 className="text-3xl text-center text-slate-500">To Do List</h1>
